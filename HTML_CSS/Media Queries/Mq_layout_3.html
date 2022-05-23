@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mq_Layout</title>
+    <style>
+      #main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 60px 100px 100px 100px;
+        gap: 20px;
+        grid-template-areas:
+          "nav nav nav"
+          "box1 box1 box2"
+          "box1 box1 box3"
+          "box1 box1 box4";
+      }
+
+      #main > div {
+        font-size: 20px;
+        padding-top: 10px;
+        padding-left: 10px;
+      }
+
+      #main > div:nth-child(1) {
+        grid-area: nav;
+        background-color: yellow;
+        font-size: 30px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+      #main > div:nth-child(2) {
+        grid-area: box1;
+        background-color: red;
+      }
+      #main > div:nth-child(3) {
+        grid-area: box2;
+        background-color: rgb(58, 206, 58);
+      }
+      #main > div:nth-child(4) {
+        grid-area: box3;
+        background-color: rgb(58, 206, 58);
+      }
+      #main > div:nth-child(5) {
+        grid-area: box4;
+        background-color: rgb(58, 206, 58);
+      }
+
+      @media all and (min-width: 451px) and (max-width: 750px) {
+        #main {
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: 50px 200px 100px;
+          grid-template-areas:
+            "nav nav nav"
+            "box1 box1 box1"
+            "box2 box3 box4"
+        }
+        #main > div:nth-child(1) {
+        font-size: 25px;
+        }
+    }
+
+      @media all and (min-width: 100px) and (max-width: 450px) {
+        #main {
+          grid-template-columns: repeat(1, 1fr);
+          grid-template-rows: 40px 120px 80px 80px 80px;
+          gap:10px;
+          grid-template-areas:
+            "nav"
+            "box1"
+            "box2"
+            "box3"
+            "box4"
+        }
+        #main > div:nth-child(1) {
+        font-size: 20px;
+        }
+    }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div>Navigation</div>
+      <div>LEFT BOX</div>
+      <div>RIGHT BOX 1</div>
+      <div>RIGHT BOX 2</div>
+      <div>RIGHT BOX 3</div>
+    </div>
+  </body>
+</html>

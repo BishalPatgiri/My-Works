@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mq_Layout</title>
+    <style>
+      #main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 60px 400px;
+        gap: 20px;
+        grid-template-areas:
+          "nav nav"
+          "box1 box2";
+      }
+
+      #main > div {
+        font-size: 20px;
+        padding-top: 10px;
+        padding-left: 10px;
+      }
+
+      #main > div:nth-child(1) {
+        grid-area: nav;
+        background-color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+      #main > div:nth-child(2) {
+        grid-area: box1;
+        background-color: red;
+      }
+      #main > div:nth-child(3) {
+        grid-area: box2;
+        background-color: rgb(58, 206, 58);
+      }
+
+      @media all and (min-width: 100px) and (max-width: 450px) {
+        #main {
+          grid-template-columns: repeat(1, 1fr);
+          grid-template-rows: 60px 200px 200px;
+          gap:20px;
+          grid-template-areas:
+            "nav"
+            "box1"
+            "box2";
+        }
+        #main > div:nth-child(1) {
+        font-size: 40px;
+        }
+    }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div>Navigation</div>
+      <div>LEFT BOX</div>
+      <div>RIGHT BOX</div>
+    </div>
+  </body>
+</html>
