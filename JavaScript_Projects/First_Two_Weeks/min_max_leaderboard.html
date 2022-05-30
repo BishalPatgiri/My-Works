@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaderBoard</title>
+    <style>
+        #first,#first+div{
+            width: 25%;
+            height: 80px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between; 
+        }
+        #first>div{
+            width: 25%;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        #first+div>h2{
+            margin: 0px 22px ;
+        }
+        div+h2{
+            margin-top: -30px;
+            text-align: center;
+        }
+        #second{
+            width: 20%;
+            height: 80px;
+            margin: auto;
+            border: 2px solid rgb(7, 7, 7) ;
+
+        }
+        #third{
+            width: 20%;
+            margin: auto;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(5,80px);
+            gap: 25px;
+
+        }
+        #third>div{
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        #last{
+                grid-area: 4/2/5/3;
+        }
+        /* #third+div{
+            width: 20%;
+            height: 60px;
+            margin: auto;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: white;
+            background-color: black;
+
+        } */
+        #second{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            background-color: rgb(163, 151, 151);
+        }
+        #first>div:nth-child(1){
+            background-color: rgb(237, 51, 51);
+        }
+        #first>div:nth-child(2){
+            background-color: rgb(11, 150, 11);
+        }
+
+        #third>div:nth-child(1){
+            background-color: rgb(72, 212, 29);
+        }
+        #third>div:nth-child(3){
+            background-color: rgb(72, 212, 29);
+        }
+        #third>div:nth-child(2){
+            background-color: rgb(240, 99, 17);
+        }
+        #third>div:nth-child(4){
+            background-color: rgb(240, 99, 17);
+        }
+        #third>div:nth-child(5){
+            background-color: rgb(240, 99, 17);
+        }
+        #third>div:nth-child(6){
+            background-color: rgb(240, 99, 17);
+        }
+        #third>div:nth-child(8){
+            background-color: rgb(240, 99, 17);
+        }
+        #third>div:nth-child(7){
+            background-color: rgb(72, 212, 29);
+        }
+        #third>div:nth-child(9){
+            background-color: rgb(72, 212, 29);
+        }
+        #third>div:nth-child(10){
+            background-color: rgba(144, 30, 225, 0.989);
+            color: white;
+        }
+        #third>div:nth-child(11){
+            background-color: rgba(144, 30, 225, 0.989);
+            color: white;
+            grid-area: 5/1/6/4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: white;
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="first">
+        <div id="min">43</div>
+        <div id="max">2019</div>
+    </div>
+    <div>
+        <h2>MIN</h2>
+        <h2>MAX</h2>
+    </div>
+    <h2>SCORE</h2>
+    <div id="second">#</div>
+    <div id="third">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div id="last">0</div>
+        <div>ENTER</div>
+    </div>
+    <p></p>
+</body>
+</html>
+<script>
+    var bag="";
+    var out=document.querySelectorAll("#third>div");
+    out.forEach(function(ele){
+        ele.addEventListener("click",calculate)
+    })
+    function calculate(){
+        var value=event.target.innerText;
+        if(value=="ENTER")
+        {
+            var val=document.querySelectorAll("#first>div")
+            var min=val[0].innerText;
+            var max=val[1].innerText;
+            var result1=eval(min-bag);
+            var result2=eval(bag-max);
+            if(result1>0){
+            document.querySelector("#min").innerText=bag;
+            document.querySelector("#second").innerText="";
+            bag="";
+            }
+
+            else if(result2>0){
+            document.querySelector("#max").innerText=bag;
+            document.querySelector("#second").innerText="";
+            bag="";
+            }
+            else{
+                document.querySelector("#second").innerText="";
+            bag="";
+            }
+        }
+        else
+        {
+        bag=bag+value;
+        document.querySelector("#second").innerText=bag;
+        }
+    }
+</script>

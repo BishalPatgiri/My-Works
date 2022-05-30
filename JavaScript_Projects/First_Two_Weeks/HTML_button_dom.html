@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout</title>
+    <style>
+        #container{
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(9,auto);
+            grid-template-rows: 60px;
+            gap: 10px;
+        }
+        #container>button{
+            font-size: 30px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    </div>
+</body>
+</html>
+<script>
+    var array=[
+        {text:"Primary", color: "white",bgcolor:"rgb(13, 79, 179)"},
+        {text:"Secondary", color: "white",bgcolor:"rgb(109, 111, 113)"},
+        {text:"Success", color: "white",bgcolor:"rgb(11, 111, 8)"},
+        {text:"Danger", color: "white",bgcolor:"rgb(167, 40, 31)"},
+        {text:"Warning", color: "black",bgcolor:"rgb(219, 170, 21)"},
+        {text:"Info", color: "white",bgcolor:"rgb(23, 129, 177)"},
+        {text:"Light", color: "rgb(12, 12, 12)",bgcolor:"white"},
+        {text:"Dark", color: "white",bgcolor:"rgb(43, 43, 44)"},
+        {text:"Link", color: "rgb(35, 136, 209)",bgcolor:"white"}
+    ]
+    array.forEach(function(ele){
+        var btn=document.createElement("button");
+        btn.innerText=ele.text;
+        btn.style.color=ele.color;
+        btn.style.backgroundColor=ele.bgcolor;
+        document.querySelector("#container").append(btn);
+    })
+</script>

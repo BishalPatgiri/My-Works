@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="gender">
+		<option value="">--</option>
+		<option value="male">M</option>
+		<option value="female">F</option>
+	</select>
+    <input type="number" id="yob">
+    <button onclick="check()" >Check Marriage Eligibility</button>
+
+</body>
+</html>
+<script>
+function check(){
+    var gender=document.getElementById("gender").value
+    var age=2022-document.getElementById("yob").value
+    if(gender=="male"&& age>=21)
+    alert("Valid legal age to get married")
+    else if(gender=="female"&&age>=18)
+    alert("Valid legal age to get married")
+    else
+    alert("Not a valid legal age to get married")
+}
+</script>

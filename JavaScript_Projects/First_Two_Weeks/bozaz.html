@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bozaz product</title>
+    <style>
+        #container{
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <p>Product category</p>
+        <select name="category" id="category">
+            <option value=""></option>
+            <option value="Electronics">Electronics</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Home Appliances">Home Appliances</option>
+            <option value="Books">Books</option>
+        </select>
+        <p>Product Tittle</p>
+        <input type="text" id="tittle">
+        <p>Product Description</p>
+        <input type="text" id="descrip">
+        <p>Product Price</p>
+        <input type="number" name="" id="price">
+        <input type="submit" name="" id="" value="Submit">
+
+    </form>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",show_data)
+
+    function show_data(){
+        event.preventDefault();
+    var card=document.createElement("div")
+    var cat=document.createElement("h2")
+    cat.innerText=document.querySelector("#category").value
+    var tittle=document.createElement("p")
+    tittle.innerText=document.querySelector("#tittle").value
+    var des=document.createElement("p")
+    des.innerText=document.querySelector("#descrip").value
+    var pric=document.createElement("p")
+    pric.innerText=document.querySelector("#price").value
+
+    var last=document.createElement("button")
+    last.innerText="DELETE"
+    last.addEventListener("click",del_all)
+    card.append(cat,tittle,des,pric,last)
+    document.querySelector("#container").append(card)
+    }
+
+    function del_all(){
+        event.target.parentNode.remove();
+    }
+
+</script>

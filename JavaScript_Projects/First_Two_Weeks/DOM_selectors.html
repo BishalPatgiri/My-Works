@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>Practise Selectors</title>
+    </head>
+    <body>
+        <h1>First H1</h1>
+        <h1>Second H1</h1>
+        <h3>First H3</h3>
+        <h3>Second H3</h3>
+        <h5>First H5</h5>
+        <h5>Second H5</h5>
+        <h5>Third H5</h5>
+        <div class="green">First DIV</div>
+        <div class="red">Second DIV</div>
+        <div class="blue">Third DIV</div>
+        <p class="green">First P</p>
+        <p class="red">Second P</p>
+        <p class="blue">Third P</p>
+        <hr/>
+        <button id="b1">Change H1</button>
+        <button id="b2">Change H3</button>
+        <button id="b3">Change H5</button>
+        <button id="b4">Change Green</button>
+        <button id="b5">Change Red</button>
+        <button id="b6">Change Blue</button>
+        <script>
+document.querySelector("#b1").addEventListener("click",first)
+function first(){
+    document.querySelector("h1").style.color="red";
+}
+
+document.querySelector("#b2").addEventListener("click",second)
+function second(){
+    var out=document.querySelectorAll("h3");
+    out.forEach(function(ele){
+        ele.style.color="green"
+        
+    });
+}
+
+document.querySelector("#b3").addEventListener("click",third)
+function third(){
+    var out=document.querySelectorAll("h5");
+    out.forEach(function(ele){
+        ele.style.color="blue"
+        
+    });
+}
+
+document.querySelector("#b4").addEventListener("click",fourth)
+function fourth(){
+    var out=document.querySelectorAll(".green");
+    out.forEach(function(ele){
+        ele.style.color="green"
+        
+    });  
+}
+
+document.querySelector("#b5").addEventListener("click",five)
+function five(){
+    var out=document.querySelectorAll(".red");
+    out.forEach(function(ele){
+        ele.style.color="red"
+        
+    });  
+}
+
+document.querySelector("#b6").addEventListener("click",six)
+function six(){
+    var out=document.querySelectorAll(".blue");
+    out.forEach(function(ele){
+        ele.style.color="blue"
+        
+    });  
+}
+        </script>
+    </body>
+</html>

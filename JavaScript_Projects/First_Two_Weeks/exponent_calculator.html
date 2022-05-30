@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            height: 30px;
+        }
+        *{
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+<body>
+        <input type="number" id="in1">
+        <input type="number" id="in2">
+        <button id="btn">Click here to find the exponent!</button>
+        <p>Result</p>
+</body>
+</html>
+<script>
+    document.querySelector("#btn").addEventListener("click",calcu)
+    function calcu(){
+        var a=document.querySelector("#in1").value;
+        var b=document.querySelector("#in2").value;
+        alert(a+"*"+b)
+        var out=1;
+        for(i=0;i<b;i++)
+        {
+            var out=out*a;
+        }
+        document.querySelector("p").innerText=out;
+    }
+</script>
