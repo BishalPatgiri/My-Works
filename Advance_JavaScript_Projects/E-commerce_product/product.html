@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Product</title>
+    <style>
+.product{
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+}
+img{
+    width: 100%;
+    height: 300px;
+}
+#counter{
+    font-size: 25px;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+    <div id="counter">Number of Product
+        <p id="num">0</p>
+    </div>
+    <div class="product">
+
+    </div>
+</body>
+</html>
+<script>
+    
+var count=0;
+let input=JSON.parse(localStorage.getItem("Products"));
+
+display(input)
+
+function display(data){
+   
+    data.forEach(function(ele,index){
+
+        count++;
+        document.getElementById("num").innerText=count;
+        let bag=document.createElement("div")
+
+        let name=document.createElement("p")
+        console.log(ele.name)
+        name.innerText=ele.name;
+
+        let category=document.createElement("p")
+        category.innerText=ele.category;
+
+        let image=document.createElement("img")
+        image.src=ele.imgUrl;
+
+        let price=document.createElement("p")
+        price.innerText=ele.price;
+
+        let gender=document.createElement("p")
+        gender.innerText=ele.gender;
+
+        let sold=document.createElement("p")
+        sold.innerText=ele.sold;
+
+        let remove=document.createElement("button")
+        remove.setAttribute("id","remove")
+        remove.innerText="Remove"
+        remove.addEventListener("click",function(){
+            del(ele,index);
+        })
+
+        let sold_yes=document.createElement("button")
+        sold_yes.setAttribute("id","sold")
+        sold_yes.innerText="Sold"
+        if(ele.sold=="true")
+        {
+            sold_yes.style.backgroundColor="red";
+            sold_yes.style.color="white";
+        }
+        else{
+            sold_yes.style.backgroundColor="green";
+            sold_yes.style.color="white";
+        }
+
+        sold_yes.addEventListener("click",function(){
+            sol(ele)
+        })
+
+        bag.append(image,name,category,price,gender,remove,sold_yes)
+        document.querySelector(".product").append(bag)
+
+    })
+
+}
+
+function del(ele,index){
+    input.splice(index,1)
+    localStorage.setItem("Products",JSON.stringify(input))
+    window.location.reload();
+}
+
+function sol(ele){
+    if(ele.sold=="true")
+    {
+        ele.sold="false";
+        localStorage.setItem("Products",JSON.stringify(input))
+        window.location.reload();
+}
+else 
+{
+    ele.sold="true";
+        localStorage.setItem("Products",JSON.stringify(input))
+        window.location.reload();
+
+}
+}
+</script>

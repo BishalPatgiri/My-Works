@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            /* border: 2px solid red; */
+            width: 90%;
+            margin: auto;
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(3,auto);
+            gap: 20px;
+        }
+        #container>div{
+            /* border: 2px solid black; */
+            text-align: center;
+        }
+        img{
+            width: 252px;
+            height: 378px;
+        }
+    </style>
+</head>
+<body>
+    <button id="sort-lh">Sort by low rating to high</button>
+    <button id="sort-hl">Sort by High rating to low</button>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+
+     // Creating my own DataBase
+     let array=[];
+    function moviesDetail(a,b,c,d){
+        this.name=a
+        this.release_date=b
+        this.poster=c
+        this.IMDB=d
+        array.push(this)
+    }
+    let movie1=new moviesDetail("Uncharted","18/02/2022","https://akamaividz2.zee5.com/image/upload/w_231,h_347,c_scale,f_webp,q_auto:eco/resources/0-0-1z5145156/portrait/1920x770788835a0ffcf415c8077ebaf0ef19837.jpg",5)
+    let movie2=new moviesDetail("Spiderman No way Home","17/12/2021","https://akamaividz2.zee5.com/image/upload/w_252,h_378,c_scale,f_webp,q_auto:eco/resources/0-0-1z5129922/portrait/1920x7709b6b03d994a741d0808255d99f972125.jpg",4)
+    let movie3=new moviesDetail("RRR","25/03/2022","https://akamaividz2.zee5.com/image/upload/w_252,h_378,c_scale,f_webp,q_auto:eco/resources/0-0-1z5148991/portrait/1920x77054d1a74cc23d4555a3c0da8c5cb985f4.jpg",6)
+    let movie4=new moviesDetail("The Batman","01/03/2022","https://scontent.fshl2-1.fna.fbcdn.net/v/t39.30808-6/278842229_532247238337050_5470917745683683461_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=p9fKnOk2R9MAX-c6Itw&_nc_ht=scontent.fshl2-1.fna&oh=00_AT9NT0hs4JvFJDk0BaIPYgkG673ScvLcI-6MmuiqkXHxBw&oe=628E6126",8)
+    let movie5=new moviesDetail("The Kashmir Files","12/02/2022","https://akamaividz2.zee5.com/image/upload/w_231,h_347,c_scale,f_webp,q_auto:eco/resources/0-0-1z5133458/portrait/thekashmirfilesposter021920x77018052022withlogo207206520a21412a902696ae502bbe76.jpg",8.3)
+    let movie6=new moviesDetail("The lost city","04/04/2022","https://m.media-amazon.com/images/I/91SLGwV-bqL._AC_SY741_.jpg",6.6)
+    let movie7=new moviesDetail("Jersey","22/04/2022","https://upload.wikimedia.org/wikipedia/en/2/2a/Jersey_2022_poster.jpg",6.9)
+    let movie8=new moviesDetail("Acharya","29/04/2022","https://upload.wikimedia.org/wikipedia/en/f/f2/Acharya_Telugu.jpg",4.2)
+    let movie9=new moviesDetail("Doctor Strange in the Multiverse of Madness","04/05/2022","https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/558ccc44580247.5817460fafa87.jpg",7.4)
+    localStorage.setItem("movies",JSON.stringify(array))
+
+    
+    let input=JSON.parse(localStorage.getItem("movies"))||[];
+
+    document.querySelector("#sort-lh").addEventListener("click",sort_lh)
+    function sort_lh()
+    {
+        input.sort(function(a,b){
+            return a.IMDB-b.IMDB;
+        })
+        console.log(input)
+        display(input)
+
+    }
+    
+    document.querySelector("#sort-hl").addEventListener("click",sort_hl)
+    function sort_hl()
+    {
+        input.sort(function(a,b){
+            return b.IMDB-a.IMDB;
+        })
+        console.log(input)
+        display(input)
+
+    }
+
+
+    display(input)
+    function display(data){
+        document.querySelector("#container").innerHTML=""
+        data.forEach(function(ele){
+            let div=document.createElement("div")
+
+            let poster=document.createElement("img")
+            poster.src=ele.poster
+            let name=document.createElement("h3")
+            name.innerText=ele.name
+            let release_date=document.createElement("p")
+            release_date.innerText=ele.release_date
+            let imdb=document.createElement("p")
+            imdb.innerText=ele.IMDB
+
+            div.append(poster,name,release_date,imdb)
+            document.querySelector("#container").append(div)
+        });
+    }
+</script>

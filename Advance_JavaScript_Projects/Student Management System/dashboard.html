@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System Dashboard</title>
+    <style>
+        #container{
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            text-align: center;
+        }
+        img{
+            height: 200px;
+            width: 200px;
+        }
+        #navbar{
+            width: 90%;
+            margin: auto;
+            margin-bottom: 50px;
+            background-color: rgb(8, 20, 60);
+            border-radius: 15px;
+            display: grid;
+            grid-template-columns: repeat(10,1fr);
+            grid-template-rows: auto;
+        }
+        #navbar>div>p{
+            text-align: center;
+            border-right: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+
+    </div>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+    let input=JSON.parse(localStorage.getItem("detail"))
+
+    display(input);
+
+    function display(data){
+        data.forEach(function(ele,index){
+            let div=document.createElement("div")
+
+            let image=document.createElement("img")
+            image.src=ele.image
+
+            let name=document.createElement("p")
+            name.innerText="Name-"+" "+ele.name
+
+            let course=document.createElement("p")
+            course.innerText="Course-"+" "+ele.course
+
+            let batch=document.createElement("p")
+            batch.innerText="Batch-"+" "+ele.batch
+
+            let unit=document.createElement("p")
+            unit.innerText="Unit-"+" "+ele.unit
+
+            let del=document.createElement("button")
+            del.innerText="DELETE"
+            del.style.color="red"
+            del.style.cursor="pointer"
+            del.addEventListener("click",function(){
+                remov(ele,index)
+            })
+
+            div.append(image,name,course,batch,unit,del)
+            document.querySelector("#container").append(div)
+        });
+    }
+
+    function remov(ele,index){
+        let trash=JSON.parse(localStorage.getItem("trash"))||[];
+        trash.push(ele)
+        localStorage.setItem("trash",JSON.stringify(trash))
+
+        input.splice(index,1)
+        localStorage.setItem("detail",JSON.stringify(input))
+        window.location.reload();
+
+    }
+
+    function calcu(){
+        let inpu=JSON.parse(localStorage.getItem("detail"))
+        let obj={}
+        for(let i=0;i<inpu.length;i++){
+            if(!obj[inpu[i].batch])
+            {
+                obj[inpu[i].batch]=0;
+            }
+        }
+
+        for(let i=0;i<inpu.length;i++){
+                obj[inpu[i].batch]++;
+        }
+        console.log(obj);
+        for(let j in obj)
+        {
+        let div=document.createElement("div")
+
+        let val=document.createElement("p")
+        val.style.color="white"
+        val.innerText=j+"-"+obj[j]
+
+        div.append(val)
+        document.querySelector("#navbar").append(div)
+        }
+    }
+
+    calcu()
+</script>

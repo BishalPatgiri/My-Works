@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritent</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    class automobiles{
+        constructor(n,c,t){
+            this.name=n
+            this.color=c
+            this.type=t
+        }
+    }
+
+    let vehicle1=new automobiles("Tata Cliq","Black","Electric")
+    console.log(vehicle1)
+
+    class NewModel extends automobiles{
+        constructor(n,c,t,cost,gear)
+        {
+            super(n,c,t)
+            this.cost=cost
+            this.Gear=gear
+        }
+        
+    }
+
+    let vehicle2=new NewModel("Tata Punch","white","Petrol","12 Lakh", "Auto")
+    console.log(vehicle2)
+</script>

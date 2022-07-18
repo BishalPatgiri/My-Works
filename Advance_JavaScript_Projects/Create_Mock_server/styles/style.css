@@ -1,0 +1,28 @@
+body{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+div{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin-top: 20px;
+}
+input{
+    height: 40px;
+    border-radius: 15px;
+    border: 1px solid rgb(148, 145, 145);
+    display: block;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+button{
+    width: 100px;
+    margin: auto;
+    border-radius: 20px;
+    border: 0px;
+    padding: 8px 0px;
+    background-color: rgb(196, 185, 185);
+    cursor: pointer;
+}

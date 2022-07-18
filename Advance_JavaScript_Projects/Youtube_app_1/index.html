@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yutube app 1</title>
+    <style>
+#form img{
+    width: 20px;
+    height: 17px;
+    cursor: pointer;
+}
+#btn{
+    /* margin-left: -5px; */
+   padding: 10px;
+   border: 0px;
+   margin-top: 5px;
+   width: 90px;
+   position: relative;
+   top: 2px;
+   left: 2px;
+
+}
+#content{
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+}
+
+#content>div{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#content img{
+    width: 100%;
+}
+#logo{
+    height: 50px;
+    width: 100px;
+}
+#main{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+input{
+    height: 35px;
+    width: 400px;
+    border-radius: 10px;
+    margin-top: 5px;
+    padding-left: 20px;
+}
+    </style>
+</head>
+<body>
+    <div id="main">
+    <img id="logo" src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png" alt="">
+    <form action="" id="form">
+        <input type="text" name="" id="check" placeholder="Search">
+        <button id="btn" onclick="result()"><img src="https://www.nicepng.com/png/full/65-659698_search-icon-without-background.png" alt=""></button>
+    </form>
+    </div>
+    <div id="content">
+
+    </div>
+</body>
+</html>
+<script>
+    const api="AIzaSyDn7F0c4kzz6eB3dWQx3fsWUNdkb3UQZIw";
+
+    let result=async()=>{
+        event.preventDefault()
+        let name=document.querySelector("#check").value
+        let url=  `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${name}&key=${api}`
+
+        data=await fetch(url)
+        data1=await data.json()
+        console.log(data1.items)
+
+        display(data1.items);
+    }
+
+    let display=(data)=>{
+        data.forEach(({id:{videoId},snippet:{title,thumbnails}})=> {
+            let div=document.createElement("div")
+
+            let image=document.createElement("img")
+            image.src=thumbnails.default.url
+            image.cursor="Pointer"
+            image.addEventListener("click",function(){hel(videoId)})
+                // go(videoId)
+
+           
+
+            let nam=document.createElement("h4")
+            nam.innerText=title
+
+            div.append(image,nam)
+            document.getElementById("content").append(div)
+        });
+    }
+    
+    function hel(videoId){
+       localStorage.setItem("video",videoId)
+       window.location.href="show.html"
+    }
+
+</script>

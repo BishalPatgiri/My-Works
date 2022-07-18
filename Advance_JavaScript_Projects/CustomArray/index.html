@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance JS</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    function bishalArray(){
+        Object.defineProperty(this,"length",{
+            value:0,
+            writable:true,
+            enumerable:false,
+        })
+        this.length=arguments.length;
+
+        for(let i=0;i<arguments.length;i++)
+        {
+            this[i]=arguments[i];
+        }
+    }
+
+    let arr1= new bishalArray(1,2,3)
+    // console.log(Object.values(arr1))
+
+    bishalArray.prototype.bishal_push=function(value){
+        this[this.length]=value;
+        this.length++;
+    }
+
+    bishalArray.prototype.bishal_pop=function(){
+        delete this[this.length-1];
+        this.length--;
+    }
+
+    bishalArray.prototype.bishal_top=function(){
+        console.log(this[this.length-1])
+    }
+
+    bishalArray.prototype.bishal_print=function(){
+        console.log(Object.values(this))
+    }
+
+    bishalArray.prototype.bishal_print_reverse=function(){
+        console.log(Object.values(this).reverse())
+    }
+
+    bishalArray.prototype.bishal_size=function(){
+        console.log(this.length)
+    }
+
+    arr1.bishal_print()
+
+    arr1.bishal_push(8)
+    arr1.bishal_push(99)
+    arr1.bishal_print()
+    arr1.bishal_size()
+    arr1.bishal_top()
+
+    arr1.bishal_pop()
+    arr1.bishal_print()
+    arr1.bishal_size()
+
+    arr1.bishal_print_reverse();
+
+
+</script>

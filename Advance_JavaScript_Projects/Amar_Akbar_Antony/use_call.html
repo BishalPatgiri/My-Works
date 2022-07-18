@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    let amar={
+        name:"amar",
+        skill:"singer",
+        location:"Goa"
+
+    }
+    let akbar={
+        name:"akbar",
+        skill:"chef",
+        location:"Mumbai"
+    }
+    let antony={
+        name:"antony",
+        skill:"magician",
+        location:"Kashmir"
+    }
+
+    // Before changing the skills
+    console.log(`${amar.name} is a ${amar.skill}` )
+    console.log(`${akbar.name} is a ${akbar.skill}` )
+    console.log(`${antony.name} is a ${antony.skill}` )
+
+    function change_skill(skill)
+    {
+        this.skill=skill;
+        console.log(`${this.name} is now a ${this.skill}`)
+    }
+
+    // After changing the skills
+    console.log("Lets Cahnge their skills now!!")
+    change_skill.call(amar,antony.skill)
+    // change_skill.call(akbar,amar.skill)
+    // change_skill.call(antony,akbar.skill)
+    
+    
+
+
+</script>

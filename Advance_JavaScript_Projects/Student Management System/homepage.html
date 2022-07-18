@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+         #navbar{
+            width: 90%;
+            margin: auto;
+            margin-bottom: 50px;
+            background-color: rgb(8, 20, 60);
+            border-radius: 15px;
+            display: grid;
+            grid-template-columns: repeat(10,1fr);
+            grid-template-rows: auto;
+        }
+        #navbar>div>p{
+            text-align: center;
+            border-right: 2px solid white;
+        }
+        form{
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+
+    </div>
+    <form action="" id="form">
+        <h2>Student Details</h2>
+        <input type="text" placeholder="name" id="name">
+        <input type="text" placeholder="course" id="course">
+        <input type="text" placeholder="image" id="image">
+        <input type="number" placeholder="unit" id="unit">
+        <input type="text" placeholder="batch" id="batch">
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",storedata)
+
+    function data(a,b,c,d,e){
+        this.name=a;
+        this.course=b;
+        this.image=c
+        this.unit=d
+        this.batch=e
+    }
+
+    function storedata(){
+        event.preventDefault();
+        let name=form.name.value
+        let course=form.course.value
+        let image=form.image.value
+        let unit=form.unit.value
+        let batch=form.batch.value
+        // console.log(name,course,image,unit,batch)
+
+        // let student=new data(name,course,image,unit,batch)
+        let student=new data(name,course,image,unit,batch)
+
+        let array=JSON.parse(localStorage.getItem("detail"))||[];
+        array.push(student)
+        localStorage.setItem("detail",JSON.stringify(array))
+        window.location.reload();
+    }
+
+    function calcu(){
+        let inpu=JSON.parse(localStorage.getItem("detail"))
+        let obj={}
+        for(let i=0;i<inpu.length;i++){
+            if(!obj[inpu[i].batch])
+            {
+                obj[inpu[i].batch]=0;
+            }
+        }
+
+        for(let i=0;i<inpu.length;i++){
+                obj[inpu[i].batch]++;
+        }
+        console.log(obj);
+        for(let j in obj)
+        {
+        let div=document.createElement("div")
+
+        let val=document.createElement("p")
+        val.style.color="white"
+        val.innerText=j+"-"+obj[j]
+
+        div.append(val)
+        document.querySelector("#navbar").append(div)
+        }
+    }
+
+    calcu()
+    
+</script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Base</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <div>
+        <h2>Add Products</h2>
+        <input type="text" id="id" placeholder="Product ID">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="price" placeholder="Price">
+        <button onclick="addProduct()">Add</button>
+    </div>
+    <div>
+        <h2>Delete Product</h2>
+        <input type="text" id="delete_id" placeholder="Product ID">
+        <button onclick="deleteProduct()">Delete</button>
+    </div>
+    <div>
+        <h2>Update Product Data</h2>
+        <input type="text" id="update_id" placeholder="Product ID">
+        <input type="text" id="new_name" placeholder="New Name">
+        <button onclick="updateProduct()">Edit Product</button>
+    </div>
+</body>
+</html>
+<script>
+    async function addProduct(){
+        const data={
+            id:document.getElementById("id").value,
+            name:document.getElementById("name").value,
+            price:document.getElementById("price").value,
+        }
+        let res= await fetch("http://localhost:3000/api/products",{
+        method:"POST",
+        body:JSON.stringify(data),
+        headers:{"Content-Type":"application/json"},
+        })
+
+        let data1=await res.json()
+    } 
+
+async function deleteProduct(){
+    let id=document.getElementById("delete_id").value
+    let res=await fetch(`http://localhost:3000/api/products/${id}`,{
+        method:"DELETE",
+        headers:{"Content-Type":"application/json"},
+    })
+    let data1=await res.json()
+
+}
+
+async function updateProduct(){
+    let id=document.getElementById("update_id").value
+    let name1=document.getElementById("new_name").value
+    let res=await fetch(`http://localhost:3000/api/products/${id}`,{
+        method:"PATCH",
+
+        body: JSON.stringify({
+            name:name1,
+        }),
+        headers:{"Content-Type":"application/json"},
+    }) 
+    let data1=await res.json()
+
+}
+
+
+</script>

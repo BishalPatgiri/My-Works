@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom_Array</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    class Stack{
+        constructor()
+        {
+            this.length=0
+            this.stack=[]
+        }
+
+        push(el){
+            this.stack[this.length]=el
+            this.length++
+        }
+
+        pop(){
+            this.stack.pop()
+            this.length--
+        }
+
+        top(){
+            console.log(this.stack[this.length-1])
+        }
+
+        print(){
+            console.log(this.stack.join(" "))
+
+        }
+        printReverse(){
+            console.log(this.stack.reverse().join(" "))
+        }
+
+        size(){
+            console.log(this.length)
+        }
+    }
+
+    let s1=new Stack()
+    console.log(s1)
+    s1.push(15)
+    s1.push(10)
+    s1.push(4)
+    
+    s1.top()
+    s1.print()
+    s1.printReverse()
+
+    s1.pop()
+    s1.print()
+    s1.size()
+
+</script>

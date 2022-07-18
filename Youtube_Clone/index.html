@@ -319,7 +319,7 @@ input{
         let url=`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=32&regionCode=IN&key=${api}`
         let data=await fetch(url)
         let data1=await data.json()
-        console.log(data1.items)
+        // console.log(data1.items)
         display(data1.items);
     }
     main_page()
@@ -335,13 +335,17 @@ input{
         display(data1.items);
     }
 
-    let display=async(data)=>{
+    let display=(data)=>{
         document.getElementById("content").innerHTML=""
         data.forEach(({id:{videoId},snippet:{title,thumbnails,channelId}})=> {
             // channellogo(channelId)
 
 
+        let CLogo=[]
+        fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&maxResults=10&key=AIzaSyCNz5Ft12lSSXgX8ms94ZlxGEgYRf_vhgE`).then(res=>res.json()).then(res=>CLogo.push(res.items[0].snippet.thumbnails.high.url))
 
+  
+        console.log(CLogo)
 
 
 
@@ -353,6 +357,8 @@ input{
 
             let channelimage=document.createElement("img")
             channelimage.setAttribute("class","clogo")
+            channelimage.src=CLogo
+            
 
 
             let image=document.createElement("img")

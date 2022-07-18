@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance JS</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let automobile={
+        company:"Tata",
+        color: "White",
+        wheel:4,
+        engine:"Electric",
+    }
+
+    let Nexon=Object.create(automobile);
+
+    let Altroz=Object.create(automobile)
+    Altroz.color="Black"
+
+    console.log(Nexon)
+    console.log(Altroz)
+
+function automobiles(company,color,wheel,engine){
+    this.company=company;
+    this.color=color;
+    this.wheel=wheel;
+    this.engine=engine;
+} 
+
+let Tigon= new automobiles("Tata","white",4,"Petrol");
+let Safari= new automobiles("Tata","black",4,"Electric");
+
+console.log(Tigon)
+console.log(Safari)
+</script>

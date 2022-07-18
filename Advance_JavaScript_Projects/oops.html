@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLD basic</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+//inheritance
+//Encapsulation
+// Abstraction
+//Polymorphism
+
+
+    class detail{
+        constructor(name,gender){
+        this._name=name
+        this._gender=gender
+        }
+
+        #show_result(){
+            console.log(`Input details are ${this._name},${this._gender}`)
+        }
+
+        print(){
+            console.log("I am Detail")
+        }
+
+    }
+
+    let f1=new detail("Bishal","Male")
+    // console.log(f1)
+    // f1.#show_result()
+
+    class small_details extends detail{
+        constructor(name,gender,age){
+        super(name,gender)
+        this._age=age
+        }
+
+        print(){
+            console.log("I am Small Details")
+        }
+
+    }
+
+    let sd=new small_details("Sunil","Male",24)
+    // console.log(sd)
+
+    let d1=new detail("A", "Male", 20) 
+    let d2=new small_details("B", "Female", 22) 
+
+d1.print()
+d2.print()
+
+</script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        #navbar{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(179, 93, 189);
+            padding: 15px 30px 15px 30px;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+            font-size: 25px;
+        }
+        a:hover{
+            color: green;
+        }
+        #items{
+            width: 90%;
+            margin: auto;
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap: 30px;
+            row-gap: 50px;
+            text-align: center;
+            line-height: 25px;
+        }
+        #items img{
+            width: 100%;
+            margin-bottom: 10px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        #items>div{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding-bottom: 20px;
+            border-radius: 15px;
+            position: relative;
+            bottom: 0px;
+            transition: bottom 1500ms;
+        }
+        #items>div:hover{
+            position: relative;
+            bottom: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="items"></div>
+</body>
+</html>
+<script type="module">
+     import navbar from "/database.js"
+     document.getElementById("navbar").innerHTML=navbar()
+
+     import {getData,append} from "/database.js" 
+
+     let url=`https://www.themealdb.com/api/json/v1/1/search.php?s=`
+     let inpu=await getData(url)
+     let cont=document.querySelector("#items")
+     append(inpu,cont)
+
+</script>

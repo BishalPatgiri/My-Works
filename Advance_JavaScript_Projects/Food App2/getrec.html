@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        #navbar{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(179, 93, 189);
+            padding: 15px 30px 15px 30px;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+            font-size: 25px;
+        }
+        a:hover{
+            color: green;
+        }
+        #rece{
+            margin-top: 50px;
+        }
+        #content{
+            width: 20%;
+            margin: auto;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            text-align: center;
+            padding: 0px 1px 30px 1px;
+            border-radius: 15px;
+            line-height: 30px;
+
+        }
+        #content>p{
+            padding: 0px 20px 0px 20px;
+        }
+        img{
+            width: 100%;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="rece"></div>
+</body>
+</html>
+<script type="module">
+    import navbar from "/database.js"
+    document.getElementById("navbar").innerHTML=navbar()
+
+    import {getData,append} from "/database.js"
+
+    let url=`https://www.themealdb.com/api/json/v1/1/random.php`
+    let inputData=await getData(url)
+    // console.log(inputData)
+    let container=document.querySelector("#rece")
+    append(inputData,container)
+
+</script>

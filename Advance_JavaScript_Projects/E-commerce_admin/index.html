@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+</head>
+<body>
+    <h3>Add Product Details here- </h3>
+    <form action="" id="form">
+        <label for="">Product Name</label>
+        <input type="text" name="" id="name" >
+        <label for="">Caegory</label>
+        <input type="text" name="" id="category" >
+        <label for="">Img Url</label>
+        <input type="text" name="" id="image" >
+        <label for="">Price</label>
+        <input type="number" name="" id="price" >
+        <label for="">Gender</label>
+        <select name="" id="gender">
+            <option value=""></option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <label for="">Sold</label>
+        <select name="" id="sold">
+            <option value="false">False</option>
+            <option value="true">True</option>
+        </select>
+        <input type="submit" value="Submit" id="add">
+
+    </form>
+    
+</body>
+</html>
+<script>
+    function add(name,category,imgUrl,price,gender,sold){
+        this.name=name;
+        this.category=category;
+        this.imgUrl=imgUrl;
+        this.price=price;
+        this.gender=gender;
+        this.sold=sold;
+    }
+
+    let array=JSON.parse(localStorage.getItem("Products"))||[];
+
+    document.querySelector("form").addEventListener("submit",store)
+    function store(){
+        let name=form.name.value;
+        let category=form.category.value;
+        let imgUrl=form.image.value;
+        let price=form.price.value;
+        let gender=form.gender.value;
+        let sold=form.sold.value;
+
+        let p=new add(name,category,imgUrl,price,gender,sold);
+        array.push(p)
+        localStorage.setItem("Products",JSON.stringify(array))
+
+    }
+</script>
